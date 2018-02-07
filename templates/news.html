@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon.png' %}">
+    <title>Manager</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="{% static 'plugins/chartist-js/dist/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/chartist-js/dist/chartist-init.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css' %}" rel="stylesheet">
+    <!--This page css - Morris CSS -->
+    <link href="{% static 'plugins/c3-master/c3.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{% static 'css/colors/blue.css' %}" id="theme" rel="stylesheet">
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+<div id="main-wrapper">
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <b>
+                        <img src="{% static 'images/logo-light-icon.png' %}" alt="homepage" class="light-logo" />
+                    </b>
+                </a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto mt-md-0">
+                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                    <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                        <form class="app-search">
+                            <input type="text" class="form-control" placeholder="搜索"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                    </li>
+                </ul>
+                <ul class="navbar-nav my-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="pages-profile.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'images/users/1.jpg' %}" alt="user" class="profile-pic m-r-10" />小明</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li> <a class="waves-effect waves-dark" href="{% url 'news' %}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">主页</span></a>
+                    </li>
+                    <li> <a class="waves-effect waves-dark" href="{% url 'index' %}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">申请病单</span></a>
+                    </li>
+                    <li> <a class="waves-effect waves-dark" href="{% url 'profile' %}" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">个人信息</span></a>
+                    </li>
+                    <li> <a class="waves-effect waves-dark" href="{% url 'table' %}" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">病单一览</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="link" data-toggle="tooltip" title="登出"><i class="mdi mdi-power"></i></a> </div>
+    </aside>
+
+    <!-- Page wrapper  -->
+    <div class="page-wrapper" >
+        <div class="container-fluid">
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-8 col-md-7">
+                    <br>
+                    <div class="card">
+                        <div class="card-block">
+                            <article id="106" class="post">
+                                <div class="post-head">
+                                    <h1 class="post-title"><a href="{% url 'newsdetail' %}">Ghost 1.0 版本正式发布</a></h1>
+                                    <div class="post-meta">
+                                        <span class="author">作者：<a href="">小明</a></span> •
+                                        <time class="post-date" datetime="2017年7月29日星期六凌晨1点45分" title="2017年7月29日星期六凌晨1点45分">2017年7月29日</time>
+                                    </div>
+                                </div>
+                                <div class="featured-media">
+                                    <br>
+                                    <a href="{% url 'newsdetail' %}"><img src="http://static.ghostchina.com/image/4/c2/804903aef2bdfcd0e4eb95b27ca77.jpg" class="img-responsive center-block" alt="Ghost 1.0 版本正式发布"></a>
+                                </div>
+                                <div class="post-content">
+                                    <br>
+                                    <p>大约四年前，我们在 Kickstarter 上推出了一个还处在原型阶段的 Ghost，这个小小的原型寄托了我们的一个想法，那就是创建 Web 上的下一代伟大的开源博客平台。 在初期阶段，我们真的只是专注于让所有功能能够运转起来。Ghost 是 Node.js 平台上为数不多的一个</p>
+                                </div>
+                                <div class="post-permalink">
+                                    <a href="{% url 'newsdetail' %}" class="btn btn-default">阅读全文</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-block">
+                            <article id="104" class="post">
+                                <div class="post-head">
+                                    <h1 class="post-title"><a href="">Ghost 1.0.0-beta.2 发布啦！</a></h1>
+                                    <div class="post-meta">
+                                        <span class="author">作者：<a href="">小明</a></span> •
+                                        <time class="post-date" datetime="2017年6月24日星期六上午9点33分" title="2017年6月24日星期六上午9点33分">2017年6月24日</time>
+                                    </div>
+                                </div>
+                                <div class="featured-media">
+                                    <br>
+                                    <a href=""><img src="http://static.ghostchina.com/image/0/94/6ac3f0cbeb3ab6e39fa40d37f9233.png" class="img-responsive center-block" alt="Ghost 1.0.0-beta.2 发布啦！"></a>
+                                </div>
+                                <div class="post-content">
+                                    <br>
+                                    <p>紧跟前两周发布的 Ghost 1.0.0-beta.1 的步伐，今天发布了  Ghost 1.0.0-beta.2 ，我们距离最终版本又迈了一大步。我们非常期盼这是最后一个 beta 版本，希望下一次发布的就是最终候选版。 在第一个 beta 版本发布后的日子里，我们发现并修复了</p>
+                                </div>
+                                <div class="post-permalink">
+                                    <a href="" class="btn btn-default">阅读全文</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"> © 2018</footer>
+    </div>
+</div>
+
+
+<!-- All Jquery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="{% static 'plugins/bootstrap/js/tether.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+<!--Wave Effects -->
+<script src="{% static 'js/waves.js' %}"></script>
+<!--Menu sidebar -->
+<script src="{% static 'js/sidebarmenu.js' %}"></script>
+<!--stickey kit -->
+<script src="{% static 'plugins/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>
+<!--Custom JavaScript -->
+<script src="{% static 'js/custom.min.js' %}"></script>
+<script src="{% static 'plugins/chartist-js/dist/chartist.min.js' %}"></script>
+<script src="{% static 'plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js' %}"></script>
+<!--c3 JavaScript -->
+<script src="{% static 'plugins/d3/d3.min.js' %}"></script>
+<script src="{% static 'plugins/c3-master/c3.min.js' %}"></script>
+<!-- Chart JS -->
+<script src="{% static 'js/dashboard1.js' %}"></script>
+</body>
+
+</html>

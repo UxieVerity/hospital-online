@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon.png' %}">
+    <title>Manager</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="{% static 'plugins/chartist-js/dist/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/chartist-js/dist/chartist-init.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css' %}" rel="stylesheet">
+    <!--This page css - Morris CSS -->
+    <link href="{% static 'plugins/c3-master/c3.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{% static 'css/colors/blue.css' %}" id="theme" rel="stylesheet">
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+<div id="main-wrapper">
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <b>
+                        <img src="{% static 'images/logo-light-icon.png' %}" alt="homepage" class="light-logo" />
+                    </b>
+                </a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto mt-md-0">
+                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                    <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                        <form class="app-search">
+                            <input type="text" class="form-control" placeholder="搜索"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                    </li>
+                </ul>
+                <ul class="navbar-nav my-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="pages-profile.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static 'images/users/1.jpg' %}" alt="user" class="profile-pic m-r-10" />小明</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li> <a class="waves-effect waves-dark" href="{% url 'news' %}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">主页</span></a>
+                    </li>
+                    <li> <a class="waves-effect waves-dark" href="{% url 'index' %}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">申请病单</span></a>
+                    </li>
+                    <li> <a class="waves-effect waves-dark" href="{% url 'profile' %}" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">个人信息</span></a>
+                    </li>
+                    <li> <a class="waves-effect waves-dark" href="{% url 'table' %}" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">病单一览</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="link" data-toggle="tooltip" title="登出"><i class="mdi mdi-power"></i></a> </div>
+    </aside>
+
+    <!-- Page wrapper  -->
+    <div class="page-wrapper" >
+        <div class="container-fluid">
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-8 col-md-7">
+                    <br>
+                    <div class="card">
+                        <div class="card-block">
+                            <article id="106" class="post">
+
+                                <header class="post-head">
+                                    <h1 class="post-title">Ghost 1.0 版本正式发布</h1>
+                                    <section class="post-meta">
+                                        <span class="author">作者：<a href="/author/wangsai/">小明</a></span> •
+                                        <time class="post-date" datetime="2017年7月29日星期六凌晨1点45分" title="2017年7月29日星期六凌晨1点45分">2017年7月29日</time>
+
+                                    </section>
+                                </header>
+
+                                <section class="featured-media">
+                                    <br>
+                                    <img src="http://static.ghostchina.com/image/4/c2/804903aef2bdfcd0e4eb95b27ca77.jpg" class="img-responsive center-block" alt="Ghost 1.0 版本正式发布">
+                                </section>
+
+                                <section class="post-content">
+                                    <br>
+                                    <p>大约四年前，我们在 Kickstarter 上推出了一个还处在原型阶段的 Ghost，这个小小的原型寄托了我们的一个想法，那就是创建 Web 上的下一代伟大的开源博客平台。</p>
+
+                                    <p>在初期阶段，我们真的只是专注于让所有功能能够运转起来。Ghost 是 Node.js 平台上为数不多的一个应用，当然，一定会伴随着陡峭的学习曲线。我们在 2013 年 9 月发布了第一个版本 Ghost 0.3，从那时起，接下来我们总共发布了 99 个版本，一直到 Ghost 0.11.9。</p>
+
+                                    <p>在那个时候，我们目睹了 Ghost 生态的成长和繁荣。从深受大家喜爱的互联网创业公司，例如 <a href="https://squareup.com/townsquare">Square</a> 和 <a href="http://blog.gotinder.com/">Tinder</a>，到这个世界上重要的大型机构，例如 Elon Musk 的 <a href="https://blog.openai.com/">OpenAI</a> 和 <a href="https://blog.mozvr.com/">Mozilla</a>，都在使用 Ghost。甚至在 HBO 的 <a href="https://twitter.com/SiliconHBO/status/874092257607135234">Silicon Valley</a> 剧集里，Ghost 还小露了一面。</p>
+
+                                    <p><strong>今天 Ghost 迎来了第 100 个版本，巧合的是，这个版本是 Ghost 1.0.0</strong></p>
+
+                                    <p>这个版本包含了 2600 多个 commit，涉及到功能特性、重构、改进和修复 bug， 这让整个代码基础更加健壮和可靠。</p>
+
+                                    <hr>
+
+                                    <h2 id="">新的编辑器</h2>
+
+                                    <p>The headline feature of Ghost 1.0 is a brand new editor, and it's one that we're incredibly excited about, because we think it paves the way toward one of the most powerful publishing experiences on the web.</p>
+
+                                    <p>Ghost has always been known and praised for its simple, yet powerful Markdown editor, which allows for a great writing experience alongside easy document formatting. </p>
+
+                                    <p>Our new editor offers a tremendous upgrade to that experience, with a cleaner design, a new toolbar, support for Markdown tables, CommonMark, Github-flavoured Markdown and multiple view options depending on whether you prefer a focused single column or a side-by-side preview.</p>
+
+                                    <p><a href="http://static.ghostchina.com/image/9/03/fbd74a0230c869f55516c7027ca4a.png" class="mfp-zoom" style="display:block;"><img src="http://static.ghostchina.com/image/9/03/fbd74a0230c869f55516c7027ca4a.png" class="img-responsive center-block" alt="Ghost 1.0 Editor"></a></p>
+
+                                    <p>While this is already a significant upgrade over the previous writing experience, there's a whole lot more going on behind the scenes.</p>
+
+                                    <p>The truth is that Ghost 1.0 doesn't just have one new editor. <strong>It has two.</strong></p>
+
+                                    <h3 id="letmeexplain">Let me explain:</h3>
+
+                                    <p>Improving Ghost's Markdown editor has always been high on our list of priorities, but for a long time we've wanted to do more. Modern publications aren't just text based, they're comprised of diverse, dynamic elements from photographs to videos, detailed charts and rich embeds. We wanted to build something entirely new which would support all of those use-cases, and be extensible for new types of content in the future.</p>
+
+                                    <p>New-age WYSIWYG editors are a dime-a-dozen these days. Everyone and their dog seems to have a fancy document editor, but all of them suffer from the same fundamental problem: A fragile (or non-existent) underlying document storage model, which means that no matter how good they look, they fall apart pretty quickly.</p>
+
+                                    <p>Back in 2015 we started talking to Matt and Cory from the Ember.js core team, who had started building a portable JSON-based document storage format called <a href="https://github.com/bustle/mobiledoc-kit">MobileDoc</a> as a part of a long term project for Bustle.com - one of the web's most successful modern publishers. MobileDoc is unique as an open standard which can store dynamic nested blocks of content in a sane manner, and translate their output into a variety of formats.</p>
+
+                                    <p>For almost two years we've been building a powerful block-based editor on top of MobileDoc - which is included in Ghost 1.0 for the first time. We're calling it <strong>Koenig</strong>.</p>
+
+                                    <p>The secret is that the upgraded Markdown editor is just a content block within the new Koenig editor:</p>
+
+                                    <video class="video-new-editor img-responsive center-block" src="https://streams.ghost.org/new-editor.mov" playsinline="" autoplay="" muted="" loop=""></video>
+
+                                    <p>Ghost 1.0 and its upgraded Markdown editor is the first step toward a much more powerful writing experience. Over the rest of the year we'll be adding support for more content types, and making them extensible so developers can create their own.</p>
+
+                                    <blockquote>
+                                        <p>Here's a very simple, early demo of where we're going next with the Koenig editor later this year:</p>
+                                    </blockquote>
+
+                                    <video class="video-koenig img-responsive center-block" src="https://streams.ghost.org/koenig.mov" playsinline="" autoplay="" muted="" loop=""></video>
+
+                                    <p>But wait there's more!</p>
+
+                                    <h2 id="ui">焕然一新的 UI</h2>
+
+                                    <p>We've given Ghost admin a fresh lick of paint, tidied up the settings area, re-jigged buttons, a better publishing workflow, and many other small visual improvements.</p>
+
+                                    <p>Oh, and you can also filter the content screen now by post state, tag and author - so it's way easier to sort through large archives of content.</p>
+
+                                    <p><a href="http://static.ghostchina.com/image/b/5e/5e38cf6a5c94f7fe58f2d15d3359d.png" class="mfp-zoom" style="display:block;"><img src="http://static.ghostchina.com/image/b/5e/5e38cf6a5c94f7fe58f2d15d3359d.png" class="img-responsive center-block" alt="Content management screen"></a></p>
+
+                                    <h2 id="anewdefaultthemedesign">A new default theme design</h2>
+
+                                    <p>Casper, our default theme, has now reached its 2.0 milestone and has a shiny new look to celebrate the occasion. This new layout was designed to accommodate all the new Ghost features we've released over the last few years, and provide a more flexible/customisable base for most publications.</p>
+
+                                    <p><a href="http://static.ghostchina.com/image/9/97/422c59344d3f65a5c1cc41c198914.jpg" class="mfp-zoom" style="display:block;"><img src="http://static.ghostchina.com/image/9/97/422c59344d3f65a5c1cc41c198914.jpg" class="img-responsive center-block" alt="Casper 2.0"></a></p>
+
+                                    <h2 id="nightshiftmode">Night shift mode</h2>
+
+                                    <p>New in beta, a night shift mode to reverse the colours of Ghost admin for a gentler experience on the eyes when working in dim lighting. (Or just feeling like you're writing code)</p>
+
+                                    <p><a href="http://static.ghostchina.com/image/7/ee/657ad2385900d348360100a375071.png" class="mfp-zoom" style="display:block;"><img src="http://static.ghostchina.com/image/7/ee/657ad2385900d348360100a375071.png" class="img-responsive center-block" alt="Night shift"></a></p>
+
+                                    <h2 id="publicationicons">Publication icons</h2>
+
+                                    <p>As well as a publication logo Ghost now also supports publication icons; handy for a smaller square logo to be used with theme UI and as a site favicon.</p>
+
+                                    <p><a href="http://static.ghostchina.com/image/6/f0/d55ee04e2b7057d3c596c71c9a7ce.png" class="mfp-zoom" style="display:block;"><img src="http://static.ghostchina.com/image/6/f0/d55ee04e2b7057d3c596c71c9a7ce.png" class="img-responsive center-block" alt="Publication icon"></a></p>
+
+                                    <h2 id="awholelotmore">A whole lot more</h2>
+
+                                    <p>There are huge number of changes and improvements to enjoy. </p>
+
+                                    <ul>
+                                        <li>A brand new importer which works a lot better than the old importer.</li>
+                                        <li>Google AMP is now optional rather than always-on.</li>
+                                        <li>Custom redirects can now be set via a config file.</li>
+                                        <li>Users can be suspended if required.</li>
+                                        <li>Collision detection, so if two people are editing a post at the same time they won't override each other. That was, um. Not ideal.</li>
+                                        <li>A new tour feature for new Ghost users to find their way around. </li>
+                                    </ul>
+
+                                    <p><a href="http://static.ghostchina.com/image/3/6d/c188fc816cb7d4fa144aa568f915c.png" class="mfp-zoom" style="display:block;"><img src="http://static.ghostchina.com/image/3/6d/c188fc816cb7d4fa144aa568f915c.png" class="img-responsive center-block" alt="Welcome Tour"></a></p>
+
+                                    <p>There are also a huge number of changes for developers in Ghost 1.0, which we've covered over <a href="https://dev.ghost.org/ghost-1-0-0/">on the developer blog</a>. There are important breaking changes to the theme API.</p>
+
+                                    <hr>
+
+                                    <h2 id="howtoupgradetoghost10">How to upgrade to Ghost 1.0</h2>
+
+                                    <p>This is our first major release which breaks backwards compatibility, so the upgrade process is more involved than usual.</p>
+
+                                    <p><strong>If you don't have a Ghost site:</strong> Try it out for free with our <a href="https://ghost.org/pricing">14 day trial on Ghost(Pro)</a>. All new sites automatically run on Ghost 1.0.</p>
+
+                                    <p><strong>If you have an existing Ghost(Pro) site:</strong> The upgrade process will be mostly automated for you, with a couple of steps. We're upgrading people in batches over the coming weeks and once your account is ready to be migrated, you'll see an "Upgrade to Ghost 1.0" button when you log into Ghost.org, with instructions for what to do next.</p>
+
+                                    <p><a href="http://static.ghostchina.com/image/b/0e/1a6744d4d5f212cf17e268a27eb77.png" class="mfp-zoom" style="display:block;"><img src="http://static.ghostchina.com/image/b/0e/1a6744d4d5f212cf17e268a27eb77.png" class="img-responsive center-block" alt="GhostPro Upgrade"></a></p>
+
+                                    <p><strong>If you self-host Ghost:</strong> You will need to set up a new Ghost 1.0 install, and export/import your content over. We've put together <a href="https://docs.ghost.org/docs/migrating-to-ghost-1-0-0">a full migration guide</a> which should help.</p>
+
+                                    <p>Because the upgrade process is more complex this time around, we've marked Ghost 0.11 as a Long Term Support (LTS) release. We will continue to provide maintenance and security updates for Ghost 0.11 for the next 6 months.</p>
+
+                                    <hr>
+
+                                    <h2 id="whatscomingnext">What's coming next</h2>
+
+                                    <p>Ghost 1.0 was an incredibly long and complex release cycle. It took us almost a full year, and things have been pretty quiet around here since then. We learned a lot from it, but we're planning on going back to smaller and much more frequent (SemVer) releases from here on in.</p>
+
+                                    <p>Also, hello from Dubai! We've got the whole Ghost team here finalising this release and working hard to make sure it's a good one :) We're going to record a little Ghost 1.0 Release podcast tomorrow, so let us know in the comments if you have any questions - and we'll discuss them IRL!</p>
+
+                                    <p><strong>In the mean time, could we ask for your help to share the news? Here's a pre-written status to make it extra simple:</strong></p>
+
+                                    <p><em>Just launched! Ghost 1.0 - A brand new editor, updated design, and ludicrous improvements all round. <a href="https://blog.ghost.org/1-0/">https://blog.ghost.org/1-0/</a></em></p>
+
+                                    <p><a class="gh-btn gh-btn-blue" href="https://twitter.com/share?text=Just launched! Ghost 1.0 - A brand new editor, updated design, and ludicrous improvements all round&amp;url=https://blog.ghost.org/1-0/" onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;"><span>Tweet this now</span></a> <a class="gh-btn gh-btn-black" href="https://bufferapp.com/add/?url=https://blog.ghost.org/1-0/&amp;text=Just launched! Ghost 1.0 - A brand new editor, updated design and ludicrous improvements all round" onclick="window.open(this.href, 'share-buffer','width=760,height=570');return false;"><span>Buffer it for later</span></a></p>
+
+                                    <p>Please enjoy these <strong>1-click buttons</strong> for Ultimate Efficiency™️, or of course you can also just copy/paste if that's more your thing.</p>
+
+                                    <p><a href="http://static.ghostchina.com/image/1/f5/cf904b0535b5da673a745f016208d.jpg" class="mfp-zoom" style="display:block;"><img src="http://static.ghostchina.com/image/1/f5/cf904b0535b5da673a745f016208d.jpg" class="img-responsive center-block" alt="Team Ghost in Dubai"></a></p>
+
+                                    <blockquote>
+                                        <p>We're also answering questions <a href="https://www.producthunt.com/posts/ghost-1-0">over on ProductHunt</a> right now!</p>
+                                    </blockquote>
+
+                                    <style>
+                                        .video-new-editor,
+                                        .video-koenig {
+                                            display: block;
+                                            max-width: 1100px;
+                                            margin: 0 0 1.5em 0;
+                                        }
+                                        .video-koenig {
+                                            border: #f1f1f1 20px solid;
+                                        }
+                                        @media (max-width: 1100px) {
+                                            .video-new-editor,
+                                            .video-koenig {
+                                                width: 100%;
+                                                max-width: auto;
+                                            }
+                                        }
+                                    </style>
+
+                                    <hr>
+
+                                    <p>原文出处：<a href="https://blog.ghost.org/1-0/">https://blog.ghost.org/1-0/</a></p>
+                                </section>
+
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer"> © 2018</footer>
+    </div>
+</div>
+
+
+<!-- All Jquery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="{% static 'plugins/bootstrap/js/tether.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+<!--Wave Effects -->
+<script src="{% static 'js/waves.js' %}"></script>
+<!--Menu sidebar -->
+<script src="{% static 'js/sidebarmenu.js' %}"></script>
+<!--stickey kit -->
+<script src="{% static 'plugins/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>
+<!--Custom JavaScript -->
+<script src="{% static 'js/custom.min.js' %}"></script>
+<script src="{% static 'plugins/chartist-js/dist/chartist.min.js' %}"></script>
+<script src="{% static 'plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js' %}"></script>
+<!--c3 JavaScript -->
+<script src="{% static 'plugins/d3/d3.min.js' %}"></script>
+<script src="{% static 'plugins/c3-master/c3.min.js' %}"></script>
+<!-- Chart JS -->
+<script src="{% static 'js/dashboard1.js' %}"></script>
+</body>
+
+</html>
